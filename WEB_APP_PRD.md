@@ -47,7 +47,7 @@
 
 ### Architecture Overview
 - **Type**: Single Page Application (SPA).
-- **Stack**: React, Vite, TypeScript, Tanstack Router, Zod Schema Validation,Dexie.js, Shadcn UI.
+- **Stack**: React, Vite, TypeScript, Tanstack Router, Zod Schema Validation,Dexie.js, Shadcn UI, Mobile-first Design using bottom tab, and sidebar for webapp.
 - **State Management**: React Context or Zustand for UI state; Dexie.js for persistent data storage.
 - **Data Processing**: Client-side parsing. Web Workers recommended for large files to prevent UI freezing.
 
