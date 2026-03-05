@@ -1,0 +1,21 @@
+# Ignore common build artifacts and dependency directories
+node_modules/
+dist/
+build/
+*.log
+.env
+.env.local
+.DS_Store
+*.tgz
+*.tar.gz
+*.zip
+*.tmp
+*.temp
+.cache/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.agents/
+.trae/
