@@ -15,11 +15,8 @@ export function Header() {
   }
 
   return (
-    <header className="min-h-16 py-4 border-b border-gray-200 flex items-center justify-between px-8 bg-white sticky top-0 z-10">
+    <header className="min-h-18 py-4 border-b border-gray-200 flex items-center justify-between px-8 bg-white sticky top-0 z-10">
       <div className="flex items-center space-x-4">
-        <Button variant="ghost" size="icon" className="md:hidden text-gray-500">
-          <Menu className="w-6 h-6" />
-        </Button>
         <h2 className="text-xl font-semibold text-gray-800">{getTitle()}</h2>
       </div>
       <div className="flex items-center space-x-6">

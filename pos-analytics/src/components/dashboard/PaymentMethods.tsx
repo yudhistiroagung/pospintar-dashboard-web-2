@@ -51,10 +51,6 @@ export function PaymentMethods() {
             <div className="text-center text-gray-400 py-4">Tidak ada data pembayaran</div>
         )}
       </div>
-      <div className="mt-8 pt-4 border-t border-gray-100 flex justify-between items-center text-gray-400 text-sm">
-        <span>Total Metode</span>
-        <span className="font-bold text-gray-700">{formatCurrency(metrics.netSales)}</span>
-      </div>
     </div>
   );
 }
