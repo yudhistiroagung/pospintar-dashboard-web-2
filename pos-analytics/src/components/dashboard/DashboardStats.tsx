@@ -1,15 +1,12 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { useDashboardMetrics } from '@/hooks/useDashboardMetrics';
-import { startOfMonth, endOfMonth } from 'date-fns';
-import { useMemo } from 'react';
 import { TrendingUp } from 'lucide-react';
 
-export function DashboardStats() {
-  const dateRange = useMemo(() => ({
-    start: startOfMonth(new Date()),
-    end: endOfMonth(new Date())
-  }), []);
+interface DashboardStatsProps {
+    dateRange: { start: Date, end: Date }
+}
 
+export function DashboardStats({ dateRange }: DashboardStatsProps) {
   const metrics = useDashboardMetrics(dateRange);
 
   const formatCurrency = (value: number) => 

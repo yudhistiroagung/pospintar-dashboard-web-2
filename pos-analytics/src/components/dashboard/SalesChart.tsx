@@ -1,15 +1,13 @@
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useDashboardMetrics } from '@/hooks/useDashboardMetrics';
-import { startOfMonth, endOfMonth, format } from 'date-fns';
-import { useMemo } from 'react';
+import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 
-export function SalesChart() {
-  const dateRange = useMemo(() => ({
-    start: startOfMonth(new Date()),
-    end: endOfMonth(new Date())
-  }), []);
+interface SalesChartProps {
+    dateRange: { start: Date, end: Date }
+}
 
+export function SalesChart({ dateRange }: SalesChartProps) {
   const metrics = useDashboardMetrics(dateRange);
 
   if (!metrics) {
@@ -29,7 +27,7 @@ export function SalesChart() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h3 className="text-lg font-bold text-gray-800">Penjualan Bulan Ini</h3>
-          <p className="text-sm text-gray-400">Tren penjualan 30 hari terakhir</p>
+          <p className="text-sm text-gray-400">Tren penjualan {metrics.totalDays} hari terakhir</p>
         </div>
         <div className="text-right">
           <p className="text-xs text-gray-400 uppercase tracking-tighter">Total</p>

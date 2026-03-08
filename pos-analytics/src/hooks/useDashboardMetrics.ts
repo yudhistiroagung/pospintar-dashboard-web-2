@@ -73,6 +73,7 @@ export function useDashboardMetrics(dateRange: { start: Date, end: Date }) {
     });
 
     const grossProfit = netSales - totalCost;
+    const totalDays = days.length;
 
     return {
       grossSales,
@@ -84,6 +85,7 @@ export function useDashboardMetrics(dateRange: { start: Date, end: Date }) {
       transactionCount,
       chartData: Object.entries(salesByDate).map(([date, value]) => ({ date, value })),
       paymentMethods: Object.entries(salesByPaymentType).map(([type, value]) => ({ type, value })),
+      totalDays
     };
   }, [dateRange]);
 }

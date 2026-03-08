@@ -1,14 +1,11 @@
 import { useDashboardMetrics } from '@/hooks/useDashboardMetrics';
-import { startOfMonth, endOfMonth } from 'date-fns';
-import { useMemo } from 'react';
 import { Banknote, CreditCard, QrCode } from 'lucide-react';
 
-export function PaymentMethods() {
-  const dateRange = useMemo(() => ({
-    start: startOfMonth(new Date()),
-    end: endOfMonth(new Date())
-  }), []);
+interface PaymentMethodsProps {
+    dateRange: { start: Date, end: Date }
+}
 
+export function PaymentMethods({ dateRange }: PaymentMethodsProps) {
   const metrics = useDashboardMetrics(dateRange);
 
   const formatCurrency = (value: number) => 

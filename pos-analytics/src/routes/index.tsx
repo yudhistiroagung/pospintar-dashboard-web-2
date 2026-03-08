@@ -2,42 +2,48 @@ import { createFileRoute } from '@tanstack/react-router'
 import { DashboardStats } from '@/components/dashboard/DashboardStats'
 import { SalesChart } from '@/components/dashboard/SalesChart'
 import { PaymentMethods } from '@/components/dashboard/PaymentMethods'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { DateRangePicker } from '@/components/common/DateRangePicker'
+import { useState } from 'react'
+import { startOfMonth, endOfMonth, endOfDay, startOfDay } from 'date-fns'
+import { DateRange } from 'react-day-picker'
 
 export const Route = createFileRoute('/')({
   component: Dashboard,
 })
 
 function Dashboard() {
+  const [date, setDate] = useState<DateRange | undefined>({
+    from: startOfMonth(new Date()),
+    to: new Date(),
+  })
+
+  // Ensure we have a valid date range for queries
+  const queryDateRange = {
+    start: startOfDay(date?.from ?? new Date()),
+    end: endOfDay(date?.to ?? date?.from ?? new Date()),
+  }
+
   return (
     <div className="flex flex-col h-full bg-gray-50">
       
       {/* Main Content Area */}
       <div className="p-8 overflow-y-auto max-w-7xl mx-auto w-full flex-1">
         {/* Date Selector */}
-        <div className="flex items-center justify-between mb-8">
-          <div className="inline-flex items-center bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
-            <button className="px-4 py-2 hover:bg-gray-100 transition-colors border-r border-gray-200">
-              <ChevronLeft className="w-5 h-5 text-gray-500" />
-            </button>
-            <div className="px-8 py-2 font-semibold text-gray-700">Bulan Ini</div>
-            <button className="px-4 py-2 hover:bg-gray-100 transition-colors border-l border-gray-200">
-              <ChevronRight className="w-5 h-5 text-gray-500" />
-            </button>
-          </div>
+        <div className="flex items-center justify-end mb-8 gap-4">
+          <DateRangePicker date={date} setDate={setDate} className="w-[300px]" />
         </div>
 
         {/* Summary Cards Grid */}
-        <DashboardStats />
+        <DashboardStats dateRange={queryDateRange} />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
           {/* Chart Section */}
           <div className="lg:col-span-2 h-96">
-             <SalesChart />
+             <SalesChart dateRange={queryDateRange} />
           </div>
           {/* Payment Types */}
           <div className="h-96">
-             <PaymentMethods />
+             <PaymentMethods dateRange={queryDateRange} />
           </div>
         </div>
       </div>
