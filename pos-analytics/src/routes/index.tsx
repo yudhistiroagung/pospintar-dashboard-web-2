@@ -3,7 +3,6 @@ import { DashboardStats } from '@/components/dashboard/DashboardStats'
 import { SalesChart } from '@/components/dashboard/SalesChart'
 import { PaymentMethods } from '@/components/dashboard/PaymentMethods'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Header } from '@/components/layout/Header'
 
 export const Route = createFileRoute('/')({
   component: Dashboard,
@@ -12,8 +11,7 @@ export const Route = createFileRoute('/')({
 function Dashboard() {
   return (
     <div className="flex flex-col h-full bg-gray-50">
-      <Header title="Laporan" />
-
+      
       {/* Main Content Area */}
       <div className="p-8 overflow-y-auto max-w-7xl mx-auto w-full flex-1">
         {/* Date Selector */}

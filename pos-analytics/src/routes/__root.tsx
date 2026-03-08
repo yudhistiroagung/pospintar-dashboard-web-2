@@ -3,6 +3,7 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { Toaster } from '@/components/ui/toaster'
 import { FileText, ShoppingCart } from 'lucide-react'
 import { SidebarRestore } from '@/components/sidebar/SidebarRestore'
+import { Header } from '@/components/layout/Header'
 
 export const Route = createRootRoute({
   component: () => (
@@ -44,6 +45,7 @@ export const Route = createRootRoute({
         </div>
 
         <main className="flex-1 flex flex-col min-w-0 bg-white overflow-hidden">
+          <Header />
           <Outlet />
         </main>
       </div>

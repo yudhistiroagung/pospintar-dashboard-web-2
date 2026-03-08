@@ -1,22 +1,26 @@
 import { Button } from "@/components/ui/button"
 import { useShopData } from "@/hooks/useShopData"
 import { Menu } from "lucide-react"
+import { useLocation } from "@tanstack/react-router"
 
-interface HeaderProps {
-    title: string
-}
-
-export function Header({ title }: HeaderProps) {
+export function Header() {
   const shop = useShopData();
   const shopName = shop?.name || 'Toko Sembako';
+  const location = useLocation();
+
+  const getTitle = () => {
+      if (location.pathname === '/') return 'Laporan';
+      if (location.pathname === '/transactions') return 'Penjualan';
+      return 'PosPintar';
+  }
 
   return (
-    <header className="h-16 border-b border-gray-200 flex items-center justify-between px-8 bg-white sticky top-0 z-10">
+    <header className="min-h-16 py-4 border-b border-gray-200 flex items-center justify-between px-8 bg-white sticky top-0 z-10">
       <div className="flex items-center space-x-4">
         <Button variant="ghost" size="icon" className="md:hidden text-gray-500">
           <Menu className="w-6 h-6" />
         </Button>
-        <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
+        <h2 className="text-xl font-semibold text-gray-800">{getTitle()}</h2>
       </div>
       <div className="flex items-center space-x-6">
         {/* User Profile */}
