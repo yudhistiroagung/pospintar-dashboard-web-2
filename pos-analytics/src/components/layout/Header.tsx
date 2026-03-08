@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { useShopData } from "@/hooks/useShopData"
-import { Bell, Menu } from "lucide-react"
+import { Menu } from "lucide-react"
 
 interface HeaderProps {
     title: string
@@ -19,11 +19,6 @@ export function Header({ title }: HeaderProps) {
         <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
       </div>
       <div className="flex items-center space-x-6">
-        {/* Notification */}
-        <button className="relative text-gray-400 hover:text-gray-600 transition-colors">
-          <Bell className="w-6 h-6" />
-          <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
-        </button>
         {/* User Profile */}
         <div className="flex items-center space-x-3 border-l pl-6 border-gray-100">
           <div className="text-right hidden sm:block">

@@ -1,7 +1,7 @@
 import { createRootRoute, Outlet, Link } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { Toaster } from '@/components/ui/toaster'
-import { FileText, ShoppingCart, LayoutDashboard } from 'lucide-react'
+import { FileText, ShoppingCart } from 'lucide-react'
 import { SidebarRestore } from '@/components/sidebar/SidebarRestore'
 
 export const Route = createRootRoute({
@@ -15,18 +15,18 @@ export const Route = createRootRoute({
           </div>
           <nav className="flex-1 px-4 space-y-1 mt-4">
             <Link 
-              to="/transactions" 
-              className="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group [&.active]:bg-blue-50 [&.active]:text-blue-600 [&.active]:border-r-4 [&.active]:border-blue-600"
-            >
-              <ShoppingCart className="w-5 h-5 mr-3" />
-              <span className="font-medium">Penjualan</span>
-            </Link>
-            <Link 
               to="/" 
               className="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group [&.active]:bg-blue-50 [&.active]:text-blue-600 [&.active]:border-r-4 [&.active]:border-blue-600"
             >
               <FileText className="w-5 h-5 mr-3" />
               <span className="font-medium">Laporan</span>
+            </Link>
+            <Link 
+              to="/transactions" 
+              className="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group [&.active]:bg-blue-50 [&.active]:text-blue-600 [&.active]:border-r-4 [&.active]:border-blue-600"
+            >
+              <ShoppingCart className="w-5 h-5 mr-3" />
+              <span className="font-medium">Penjualan</span>
             </Link>
           </nav>
           <div className="p-4 mt-auto border-t border-gray-100">
