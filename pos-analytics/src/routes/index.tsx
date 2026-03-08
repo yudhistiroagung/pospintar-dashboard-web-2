@@ -4,12 +4,16 @@ import { SalesChart } from '@/components/dashboard/SalesChart'
 import { PaymentMethods } from '@/components/dashboard/PaymentMethods'
 import { Bell, ChevronLeft, ChevronRight, Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useShopData } from '@/hooks/useShopData'
 
 export const Route = createFileRoute('/')({
   component: Dashboard,
 })
 
 function Dashboard() {
+  const shop = useShopData();
+  const shopName = shop?.name || 'Toko Sembako';
+  
   return (
     <div className="flex flex-col h-full bg-gray-50">
       {/* Top Header */}
@@ -29,11 +33,11 @@ function Dashboard() {
           {/* User Profile */}
           <div className="flex items-center space-x-3 border-l pl-6 border-gray-100">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-semibold text-gray-800">Toko Sembako</p>
+              <p className="text-sm font-semibold text-gray-800">{shopName}</p>
               <p className="text-xs text-gray-400 uppercase tracking-wider">Pemilik</p>
             </div>
             <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
-              A
+              {shopName ? shopName.charAt(0).toUpperCase() : 'T'}
             </div>
           </div>
         </div>
