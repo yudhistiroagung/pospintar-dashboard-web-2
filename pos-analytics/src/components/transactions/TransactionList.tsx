@@ -10,8 +10,12 @@ import { useTransactions } from "@/hooks/useTransactions";
 import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 
-export function TransactionList() {
-  const { transactions, count } = useTransactions(50) || { transactions: [], count: 0 };
+interface TransactionListProps {
+    dateRange?: { start: Date; end: Date };
+}
+
+export function TransactionList({ dateRange }: TransactionListProps) {
+  const { transactions, count } = useTransactions({ limit: 50, dateRange }) || { transactions: [], count: 0 };
 
   const formatCurrency = (value: number) => 
     new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
