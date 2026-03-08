@@ -18,7 +18,7 @@ export function TransactionList({ dateRange }: TransactionListProps) {
   const { transactions, count } = useTransactions({ limit: 50, dateRange }) || { transactions: [], count: 0 };
 
   const formatCurrency = (value: number) => 
-    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+    new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(value);
 
   return (
     <div className="rounded-md border">
