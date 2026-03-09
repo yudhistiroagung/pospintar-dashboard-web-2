@@ -1,11 +1,9 @@
-import { Button } from "@/components/ui/button"
 import { useShopData } from "@/hooks/useShopData"
-import { Menu } from "lucide-react"
 import { useLocation } from "@tanstack/react-router"
 
 export function Header() {
   const shop = useShopData();
-  const shopName = shop?.name || 'Toko Sembako';
+  const shopName = shop?.name || 'Toko';
   const location = useLocation();
 
   const getTitle = () => {

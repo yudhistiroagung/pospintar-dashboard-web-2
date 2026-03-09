@@ -3,6 +3,7 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { Toaster } from '@/components/ui/toaster'
 import { FileText, ShoppingCart } from 'lucide-react'
 import { SidebarRestore } from '@/components/sidebar/SidebarRestore'
+import { SidebarReset } from '@/components/sidebar/SidebarReset'
 import { Header } from '@/components/layout/Header'
 
 export const Route = createRootRoute({
@@ -30,8 +31,9 @@ export const Route = createRootRoute({
               <span className="font-medium">Penjualan</span>
             </Link>
           </nav>
-          <div className="p-4 mt-auto border-t border-gray-100">
+          <div className="p-4 mt-auto border-t border-gray-100 space-y-2">
             <SidebarRestore />
+            <SidebarReset />
           </div>
         </aside>
 
