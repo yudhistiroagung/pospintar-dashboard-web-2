@@ -12,7 +12,7 @@ export const Route = createFileRoute('/transactions')({
 function Transactions() {
   const [date, setDate] = useState<DateRange | undefined>({
     from: startOfMonth(new Date()),
-    to: endOfMonth(new Date()),
+    to: new Date(),
   })
 
   // Ensure we have a valid date range for queries
