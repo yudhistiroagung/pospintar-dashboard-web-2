@@ -57,7 +57,7 @@ export function SidebarRestore() {
       <button
         onClick={handleClick}
         disabled={loading}
-        className="flex w-full items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group disabled:opacity-50"
+        className="flex w-full items-center px-4 py-3 text-gray-600 bg-gray-50 border border-gray-200 hover:bg-gray-100 hover:border-gray-300 rounded-lg transition-all group disabled:opacity-50 animate-pulse hover:animate-none"
       >
         <Upload className="w-5 h-5 mr-3" />
         <span className="font-medium">

@@ -5,9 +5,12 @@ import { FileText, ShoppingCart } from 'lucide-react'
 import { SidebarRestore } from '@/components/sidebar/SidebarRestore'
 import { SidebarReset } from '@/components/sidebar/SidebarReset'
 import { Header } from '@/components/layout/Header'
+import { useShopData } from '@/hooks/useShopData'
 
 export const Route = createRootRoute({
-  component: () => (
+  component: () => {
+    const { count } = useShopData() || { count: 0 };
+    return (
     <>
       <div className="flex h-screen flex-col md:flex-row bg-gray-50 text-gray-800 antialiased font-sans">
         {/* Sidebar */}
@@ -33,7 +36,7 @@ export const Route = createRootRoute({
           </nav>
           <div className="p-4 mt-auto border-t border-gray-100 space-y-2">
             <SidebarRestore />
-            <SidebarReset />
+            {count > 0 && <SidebarReset />}
           </div>
         </aside>
 
@@ -54,5 +57,5 @@ export const Route = createRootRoute({
       <Toaster />
       <TanStackRouterDevtools />
     </>
-  ),
+  )},
 })
