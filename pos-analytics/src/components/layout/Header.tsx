@@ -5,7 +5,7 @@ import { Menu } from "lucide-react"
 
 export function Header() {
   const data = useShopData();
-  const shopName = data?.shop?.name || 'Toko Sembako';
+  const shopName = data?.shop?.name;
   const location = useLocation();
 
   const getTitle = () => {
@@ -24,15 +24,25 @@ export function Header() {
       </div>
       <div className="flex items-center space-x-6">
         {/* User Profile */}
-        <div className="flex items-center space-x-3 border-l pl-6 border-gray-100">
-          <div className="text-right hidden sm:block">
-            <p className="text-sm font-semibold text-gray-800">{shopName}</p>
-            <p className="text-xs text-gray-400 uppercase tracking-wider">Pemilik</p>
-          </div>
-          <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
-            {shopName ? shopName.charAt(0).toUpperCase() : 'T'}
-          </div>
-        </div>
+        {shopName ? (
+            <div className="flex items-center space-x-3 border-l pl-6 border-gray-100">
+            <div className="text-right hidden sm:block">
+                <p className="text-sm font-semibold text-gray-800">{shopName}</p>
+                <p className="text-xs text-gray-400 uppercase tracking-wider">Pemilik</p>
+            </div>
+            <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
+                {shopName.charAt(0).toUpperCase()}
+            </div>
+            </div>
+        ) : (
+            <div className="flex items-center space-x-3 border-l pl-6 border-gray-100 opacity-50">
+             <div className="text-right hidden sm:block">
+                 <div className="h-4 w-24 bg-gray-200 rounded animate-pulse mb-1"></div>
+                 <div className="h-3 w-12 bg-gray-200 rounded animate-pulse ml-auto"></div>
+             </div>
+             <div className="h-10 w-10 rounded-full bg-gray-200 animate-pulse"></div>
+            </div>
+        )}
       </div>
     </header>
   )
